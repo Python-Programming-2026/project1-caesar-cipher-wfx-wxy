@@ -1,1 +1,78 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/fPQK30A4)
+# 凯撒密码加密/解密工具
+
+一个基于 Python 实现的简易凯撒密码工具，专注于固定偏移量（ASCII 码 +3 加密、-3 解密）的文本转换，代码简洁、易用性强，适合基础学习与日常简单加密需求。
+
+## 一、工具介绍
+
+本工具实现经典凯撒密码的核心功能，采用固定偏移量 3 进行字符转换，即：
+
+- 加密：将输入文本中每个字符的 ASCII 码值加 3，再转换为对应字符
+
+- 解密：将加密文本中每个字符的 ASCII 码值减 3，还原为原始文本
+
+支持所有 ASCII 可打印字符（字母、数字、标点符号、空格等），无需额外依赖，直接运行即可使用。
+
+## 二、运行环境
+
+- 编程语言：Python 3.x（推荐 Python 3.6 及以上版本）
+
+- 依赖环境：无任何第三方依赖，原生 Python 环境即可运行
+
+## 三、核心代码（配套 Python 文件）
+
+将 `caesar_cipher.py`文件与本 README.md 放在同一目录下
+## 四、使用方法
+
+### 1. 直接运行测试
+
+1. 打开终端，进入代码所在目录；
+
+2. 执行命令：`python caesar_cipher.py`；
+
+3. 终端将自动输出测试结果（原始文本、加密文本、解密文本）。
+
+### 2. 自定义使用（调用函数）
+
+在 Python 脚本或交互式环境中，可直接调用核心函数，示例如下：
+
+```python
+# 导入函数（若在同一文件中可直接调用）
+from caesar_cipher import caesar_encrypt, caesar_decrypt
+
+# 自定义加密文本
+original = "Hello, Python! 123"
+encrypted = caesar_encrypt(original)
+print(f"加密结果：{encrypted}")
+
+# 自定义解密文本
+decrypted = caesar_decrypt(encrypted)
+print(f"解密结果：{decrypted}")
+```
+
+## 五、效果示例
+
+输入原始文本：`hello,world`
+
+加密后（ASCII+3）：`khoor#zruog`
+
+解密后（ASCII-3）：`hello,world`
+
+## 六、代码结构说明
+
+- `caesar_encrypt(text)`：加密核心函数，接收原始文本，返回加密后文本；
+
+- `caesar_decrypt(text)`：解密核心函数，接收加密文本，返回原始文本；
+
+- 测试代码块：默认测试`hello,world` 的加密和解密过程，可直接修改测试文本。
+
+## 七、注意事项
+
+- 本工具采用固定偏移量 3，加密和解密必须使用同一偏移量才能正确还原文本；
+
+- 支持所有 ASCII 可打印字符，若输入非 ASCII 字符（如部分特殊符号），可能出现异常；
+
+- 仅用于基础学习和简单加密场景，不适合高安全性加密需求。
+
+## 八、扩展说明
+
+若需修改偏移量（如改为 +5、-2 等），可直接修改函数中 `new_ascii = ascii_code + 3` 和 `new_ascii = ascii_code - 3` 中的数字，确保加密和解密的偏移量一致即可。
