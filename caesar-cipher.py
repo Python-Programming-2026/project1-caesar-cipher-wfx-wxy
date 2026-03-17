@@ -1,41 +1,36 @@
 def caesar_encrypt(text):
     """
     凯撒密码加密函数：将每个字符的 ASCII 码 +3
-    :param text: 原始明文字符串
-    :return: 加密后的字符串
     """
-    encrypted_result = ""
+    result = ""
     for char in text:
-        # 获取字符的ASCII码，加3后转回字符
         ascii_code = ord(char)
         new_ascii = ascii_code + 3
-        encrypted_result += chr(new_ascii)
-    return encrypted_result
+        result += chr(new_ascii)
+    return result
 
 def caesar_decrypt(text):
     """
     凯撒密码解密函数：将每个字符的 ASCII 码 -3
-    :param text: 加密后的字符串
-    :return: 解密后的原始字符串
     """
-    decrypted_result = ""
+    result = ""
     for char in text:
-        # 获取字符的ASCII码，减3后转回字符
         ascii_code = ord(char)
         new_ascii = ascii_code - 3
-        decrypted_result += chr(new_ascii)
-    return decrypted_result
+        result += chr(new_ascii)
+    return result
 
-# 测试代码
+# 交互式主程序
 if __name__ == "__main__":
-    # 原始测试文本
-    original_text = "hello,world"
-    print(f"原始文本：{original_text}")
+    mode = input("请输入加密还是解密：")
     
-    # 加密
-    encrypted_text = caesar_encrypt(original_text)
-    print(f"加密后（ASCII+3）：{encrypted_text}")
+    content = input("输入内容：")
     
-    # 解密
-    decrypted_text = caesar_decrypt(encrypted_text)
-    print(f"解密后（ASCII-3）：{decrypted_text}")
+    if mode == "加密":
+        final = caesar_encrypt(content)
+        print("加密结果：", final)
+    elif mode == "解密":
+        final = caesar_decrypt(content)
+        print("解密结果：", final)
+    else:
+        print("输入错误！请输入：加密 或 解密")
